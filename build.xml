@@ -1,0 +1,19 @@
+<project default="jar">
+  <path id="project.class.path">
+    <pathelement path="${java.class.path}/"/>
+    <pathelement path="thirdparty/junit-4.10.jar"/>
+  </path>
+
+   <target name="compile">
+      <mkdir dir="build/classes"/>
+      <javac srcdir="src" destdir="build/classes"  >
+           <classpath refid="project.class.path" />
+      </javac>
+   </target>
+   <target name="jar" depends="compile">
+      <mkdir dir="jar"/>
+      <jar destfile="jar/JFastParser.jar" basedir="build/classes">
+      </jar>
+   </target>
+</project>
+
