@@ -9,6 +9,9 @@
       <javac srcdir="src" destdir="build/classes"  debug="true" >
            <classpath refid="project.class.path" />
       </javac>
+      <copy todir="build/classes" >
+          <fileset dir="src" />
+      </copy>
    </target>
    <target name="jar" depends="compile">
       <mkdir dir="jar"/>
