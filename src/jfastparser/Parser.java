@@ -24,6 +24,9 @@ public final class Parser {
 		int newpos = pos;
 		int value = 0;
 		boolean neg = false;
+		if( pos >= len ) {
+			throw new RuntimeException("pos at end of string");
+		}
 		if( linearray[pos] == '-' ) {
 			neg = true;
 			newpos++;
@@ -50,7 +53,7 @@ public final class Parser {
 		double divider = 1;
 		char thischar = 0;
 		int oldpos = pos;
-		while( pos < len && ( thischar = linearray[pos] ) != ' ' && thischar != 'e' ) {
+		while( pos < len && ( thischar = linearray[pos] ) != ' ' && thischar != 'e' && thischar != '\t' ) {
 			if( thischar == '-') {
 				negative = true;
 			} else if( thischar == '.' ) {
@@ -68,7 +71,7 @@ public final class Parser {
 			pos++;
 			boolean exponentnegative = false;
 			int exponent = 0;
-			while( pos < len && ( thischar = linearray[pos] ) != ' ' ) {
+			while( pos < len && ( thischar = linearray[pos] ) != ' ' && thischar != '\t' ) {
 				if( thischar == '-') {
 					exponentnegative = true;
 				} else if( thischar != '+' ) {
