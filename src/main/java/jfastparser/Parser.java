@@ -57,7 +57,7 @@ public final class Parser {
         double divider = 1;
         char thischar = 0;
         int oldpos = pos;
-        while (pos < len && (thischar = linearray[pos]) != ' ' && thischar != 'e' && thischar != '\t') {
+        while (pos < len && (thischar = linearray[pos]) != ' ' && thischar != 'e' && thischar != '\t' && thischar != '\n') {
             if (thischar == '-') {
                 negative = true;
             } else if (thischar == '.') {
@@ -104,6 +104,19 @@ public final class Parser {
             pos++;
         }
     }
+
+    /**
+     * if character at current position is a newline advances one position, then returns true;
+     * @return
+     */
+    public final boolean eatNewline() {
+        if(pos < len && (linearray[pos] == '\n')) {
+            pos++;
+            return true;
+        }
+        return false;
+    }
+
 
     public final void eatChar(char target) {
         if (linearray[pos] != target) {
