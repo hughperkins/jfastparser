@@ -7,9 +7,13 @@
 package jfastparser;
 
 import junit.framework.TestCase;
-import static jfastparser.ExceptionAssertions.*;
+import org.junit.Test;
 
-public class TestParser extends TestCase {
+import static jfastparser.ExceptionAssertions.*;
+import static junit.framework.TestCase.assertEquals;
+
+public class TestParser {
+	@Test
 	public void test() {
 		String input = "123 56.4 12:3";
 		final Parser parser = new Parser(input);
