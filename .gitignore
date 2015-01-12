@@ -6,4 +6,4 @@ target
 *.war
 *.ear
 build/
-
+.idea
